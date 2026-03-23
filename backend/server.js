@@ -10,8 +10,8 @@ app.use(cors());
 app.use(express.json());
 
 // Connect MongoDB
-const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/school_management';
-mongoose.connect(mongoURI)
+const mongoURI = process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/school_management';
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('✅ MongoDB Connected'))
     .catch(err => console.log('❌ MongoDB Error:', err));
 
